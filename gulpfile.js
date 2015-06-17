@@ -28,7 +28,8 @@ var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 var karma = require('karma').server;
-
+var protractor = require("gulp-protractor");
+var webdriver_update = protractor.webdriver_update;
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -41,6 +42,17 @@ var AUTOPREFIXER_BROWSERS = [
   'android >= 4.4',
   'bb >= 10'
 ];
+
+/* protractor test task setup */
+gulp.task('webdriver_update', webdriver_update);
+gulp.task('protractor', ['webdriver_update'], function(cb) {
+  gulp.src(__dirname + "/app/scripts/**/*.e2e.js").pipe(protractor.protractor({
+    configFile: __dirname + '/protractor.conf.js',
+    args: []
+  })).on('error', function(e) {
+    // console.log(e)
+  }).on('end', cb);
+});
 
 //run unit test. CLI or single run
 gulp.task('test', function(done) {

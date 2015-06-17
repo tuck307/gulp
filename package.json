@@ -28,8 +28,10 @@
     "run-sequence": "^1.0.1",
     "gulp-karma": "^0.0.4",
     "karma": "^0.12.36",
-    "karma-jasmine": "~0.3.5",
-    "karma-chrome-launcher": "~0.1.12"
+    "karma-jasmine": "^0.3.5",
+    "karma-chrome-launcher": "^0.1.12",
+    "protractor": "^2.1.0",
+    "gulp-protractor": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
